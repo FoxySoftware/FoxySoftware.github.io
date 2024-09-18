@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Processor Module - Foxy</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Foxy</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../overview/" class="nav-link">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../install/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../collector_module/" class="nav-link">Collector Module</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Processor Module</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../collector_module/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#ocr-processor-module" class="nav-link">OCR Processor Module</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<pre><code>                           .      
+                           .~5B.     
+                         ~P#@@@?     
+                        !@@@@@@@J.   
+  ^~~^:.                P@@@@@@&amp;&amp;BY. 
+  ^5@@&amp;#G?:            !&amp;@@@@@&amp;!.:.  
+    ?@@@@@&amp;!       .^!5@@@@@@@@G     
+     B@@@@@&amp;:   ^JG&amp;@@@@@@@@@@@?       '########::'#######::'##::::'##:'##:::'##:
+    .#@@@@@@~ ^P@@@@@@@@@@@@@&amp;7         ##.....::'##.... ##:. ##::'##::. ##:'##::
+    ?@@@@@@&amp;.^&amp;@@@@@@@@@@@@@@7          ##::::::: ##:::: ##::. ##'##::::. ####:::
+    5@@@@@@G G@@@@@@@@@@@@@@@!          ######::: ##:::: ##:::. ###::::::. ##::::
+    J@@@@@@#:#@@@@@@@@@@@G?@@G.         ##...:::: ##:::: ##::: ## ##:::::: ##::::
+    .P@@@@@@P#@@@@@@@@&amp;BY. ~B@G^        ##::::::: ##:::: ##:: ##:. ##::::: ##::::
+      ~YB#&amp;@@@@@@@@@@#P7    .J&amp;&amp;P5!     ##:::::::. #######:: ##:::. ##:::: ##::::
+         .::^^^^^^^^^^^:      .^^^:    ..:::::::::.......:::..:::::..:::::..:::::   
+.__. __  .__     .__ .__ .__. __ .___ __. __..__..__     .  ..__..__ .  ..   .___
+|  |/  ` [__)    [__)[__)|  |/  `[__ (__ (__ |  |[__)    |\/||  ||  \|  ||   [__ 
+|__|\__. |  \    |   |  \|__|\__.[___.__).__)|__||  \    |  ||__||__/|__||___[___
+_________________________________________________________________________________
+</code></pre>
+<hr />
+<h1 id="ocr-processor-module">OCR Processor Module</h1>
+<p>The name "OCR Processor Module" might not fully capture the breadth of its capabilities. Although its primary function is character recognition, the module also provides tools for tagging, data modeling, and exporting data to SQLite databases or spreadsheets. This document offers an overview of its key features and functionalities.</p>
+<hr />
+<pre><code>[?] Select a Project.: 
+ ❯ crash_game
+   IFT4_FROM_VIDEO_FILE
+   IFT4_STARSHIP
+</code></pre>
+<p>In the following menu, you can view the project's screen sessions, as detailed in the Collector module documentation.</p>
+<pre><code>_______________________________________________________________________________________________________________
+
+[?] Select an Screen Session: 
+ ❯ 2_gyd_17-09-2024_crash_game_web
+   1_fdd_14-09-2024_crash_game_web
+   0_ghz_14-09-2024_crash_game_web
+   ⏎ Return
+</code></pre>
+<p>The next screen shows the project panel configuration menu from the OCR Processor module’s view.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/module_init_processor_module.png" /></p>
+<p>In the red-highlighted panels , we can see which settings are required. Let’s begin with "Image with OCR areas." For assistance, we can open Menu No. 4.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/menu_init_state_processor.png" /></p>
+<p><strong>4: IMAGE OCR AREAS MENU 🔲  ✔️</strong></p>
+<pre><code>_______________________________________________________________________________________________________________
+
+╭─ 1: Select an image from the captures generated by the 'Image Collector' module ───────────╮
+│ Manually copy and paste an image from the captures into the folder Open Folder 📁          │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ 2: Indicate the text extraction areas ────────────────────────────────────────────────────╮
+│ Using a simple image editor, select the areas by drawing rectangles around them. Use the   │
+│ color from the image in the Open Folder 📁                                                 │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+[?] To continue select an option.: 
+ ❯ ➔ Continue
+   Open the Project Configuration Panel
+   |↩ Exit
+</code></pre>
+<p>The instructions are straightforward. Below is an example image:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/example_image_areas_ocr.png" /></p>
+<hr />
+<p>All the green boxes are designated as OCR areas, which are zones where character recognition will occur. It is crucial that these areas neither cut off the text nor include unwanted text fragments. Icons on the same line as the text may interfere with character detection; therefore, the software provides options to exclude or remove sub-images as specified.</p>
+<h3 id="recommendations">Recommendations:</h3>
+<ol>
+<li><strong>Ensure Box Thickness</strong>: The edges of the boxes should have a minimum thickness of 3 pixels.</li>
+<li><strong>OCR Area Placement</strong>: The OCR area should extend inward from the outer edge of the rectangle. Avoid including fragments of other lines at the edges of these areas.</li>
+<li><strong>Color Adjustment</strong>: If the website or video uses the same default color to define areas, replace the area color by adjusting the image color that indicates the border color. This will help prevent recognition issues.</li>
+</ol>
+<p>After placing the image in the designated folder, the system will automatically generate a numbered version of it.</p>
+<hr />
+<pre><code>╭───────────────── IMAGE WITH OCR AREAS 🔲  ──────────────────╮╭────────────── IMAGE WITH LISTED OCR AREAS 🔢  ──────────────╮
+│                                                             ││                                                             │
+│   Required             False                                ││   Required             False                                │
+│   Total areas          76                                   ││   File name            areas ocr _listed.png                │
+│   File name            areas ocr .png                       ││   Resolution image     3840, 2160                           │
+│   Resolution image     3840, 2160                           ││   Required resolution  FOUR K: 3840 x 2160                  │
+│   Required resolution  FOUR K: 3840 x 2160                  ││   Image                Open Image 🏞️                        │
+│   Image                Open Image 🏞️                        ││   Folder               Open Folder 📁                       │
+│   Folder               Open Folder 📁                       ││   Hash file            84b997d3e663d27ceae39a1e62f7abe8     │
+│   Hash file            9dd86dbcd715f9b6042163f9723b83db     ││   Error message                                             │
+│                                                             ││                                                             │
+╰─────────────────────────────────────────────────────────────╯╰─────────────────────────────────────────────────────────────╯
+</code></pre>
+<p>In this example, 76 areas were detected. The 'Hash file' variable is used to identify whether any changes have been made to the image. If a change is detected, the image with the listed OCR areas will be regenerated. Please note that if you start configuring the areas and, for any reason, delete the area image and reload the configuration, all previous settings will be lost.</p>
+<p>The image with the listed areas will look like this:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/example_labelled_areas_ocr.png" /></p>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/example_image_areas_ocr_top_grill_icons.png" /></p>
+<p>In this example, if we look at the top of the grid on the same row where character recognition is to be performed, there are icons that the OCR process might incorrectly interpret as text. To avoid this issue, select these sub-images and instruct the program to exclude them.</p>
+<p>To do this:</p>
+<pre><code>Go to the main panel labeled 'SUB IMAGE TO REMOVE'.
+Save the cropped images in the folder that opens when you click the link.
+</code></pre>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/example_sub_image_to_remove.png" /></p>
+<p>The next step is labeling and configuring the OCR areas.</p>
+<p>To do this, we enter Menu No. 5:
+In this menu, we will define the settings for each of the areas.</p>
+<p><strong>5: OCR AREA CONFIGURATION MENU 🛠️  ✔️</strong></p>
+<pre><code>╭─ Help Information ─────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                            │
+│ 1: Character Recognition and Value Extraction Settings                                                                     │
+│ This menu allows you to configure character recognition and value extraction for each specific area of the image. You can  │
+│ adjust settings individually for each previously selected area. Options include customizing text recognition, defining     │
+│ final values, and organizing areas into groups for better management.                                                      │
+│                                                                                                                            │
+│ 2: Labeling and Final Value Extraction                                                                                     │
+│ In this step, you can assign a name to represent the final value you want to extract from each area of the image. You can  │
+│ also define the data type that best suits your needs, such as text, number, or date. Additionally, you will have the       │
+│ option to select a specific portion of the recognized text, allowing you to focus only on the relevant part of the         │
+│ original string.                                                                                                           │
+│                                                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Image with Enumerated Areas ──────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                        Open Image 🏞️                                                       │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                            🛠️ ➔ Area No: 0 - TOTAL ∈ N_JUGADORES                                           │
+│                                                                                                                            │
+│ | Option | Setting            | Value                                      | Description                                 | │
+│ |--------|--------------------|--------------------------------------------|---------------------------------------------| │
+│ | 1      | Name               | N_JUGADORES                                | The name associated with this OCR area.     | │
+│ |--------|--------------------|--------------------------------------------|---------------------------------------------| │
+│ | 2      | Group name         | TOTAL                                      | The group name to which this OCR area       | │
+│ |        |                    |                                            | belongs. is represented with this symbol ⋓  | │
+│ |--------|--------------------|--------------------------------------------|---------------------------------------------| │
+│ | 3      | Ocr allow list     | ['0', '1', '2', '3', '4', '5', '6', '7',   | Specifies a set of characters that are      | │
+│ |        |                    | '8', '9']                                  | allowed for recognition. Only characters    | │
+│ |        |                    |                                            | included in this list will be considered by | │
+│ |        |                    |                                            | the OCR. Characters not in the allowlist    | │
+│ |        |                    |                                            | will be ignored.                            | │
+│ |--------|--------------------|--------------------------------------------|---------------------------------------------| │
+│ | 4      | Ocr block list     |                                            | Specifies a set of characters to be         | │
+│ |        |                    |                                            | excluded from recognition. This parameter   | │
+│ |        |                    |                                            | is ignored if an allowlist is provided.     | │
+│ |--------|--------------------|--------------------------------------------|---------------------------------------------| │
+│ | 5      | Ocr text threshold | 0.2                                        | A confidence score threshold for including  | │
+│ |        |                    |                                            | detected text in the results. Only text     | │
+│ |        |                    |                                            | regions with confidence scores above this   | │
+│ |        |                    |                                            | threshold will be included. Range: 0 to 1.  | │
+│ |--------|--------------------|--------------------------------------------|---------------------------------------------| │
+│ | 6      | Ocr low text       | 0.4                                        | A threshold for detecting text in           | │
+│ |        |                    |                                            | low-quality areas. Defines the minimum      | │
+│ |        |                    |                                            | confidence score for text detection in      | │
+│ |        |                    |                                            | regions with blurry or low-quality text.    | │
+│ |        |                    |                                            | Range: 0 to 1.                              | │
+│ |--------|--------------------|--------------------------------------------|---------------------------------------------| │
+│ | 7      | Final block list   |                                            | Specifies a set of characters to be         | │
+│ |        |                    |                                            | excluded from The final value               | │
+│ |--------|--------------------|--------------------------------------------|---------------------------------------------| │
+│ | 8      | Type final value   | Integer                                    | Specifies the data type for the final       | │
+│ |        |                    |                                            | value.                                      | │
+│                                                                                                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+</code></pre>
+<p>The software supports three languages, and this section is automatically well-documented. Therefore, we will avoid duplicating the interface details here. However, it's important to note the following three visible sections:</p>
+<pre><code>Help Information Panel: Provides contextual assistance.
+Numbered Image Link: Contains a link to the numbered image.
+Configuration Grid: Displays the grid of the area to be configured, labeled in this case as 'No. 0'.
+</code></pre>
+<p>In this grid, you will find the assigned name and group for the area, a list of recognizable characters, the threshold values for 'OCR TEXT THRESHOLD' and 'OCR LOW TEXT', and the data type for the final value.</p>
+<p>You can access these settings through the menu on the same screen. For practical purposes, I will illustrate this in the following menu representation.</p>
+<pre><code>[?] To continue select an option.: 
+ ❯ 1: Enter a name to represent the final value that contains the area
+   2: Assign the area to a group
+   3: Set characters that are allowed to be recognized in the image area
+   4: Set characters to be excluded from recognition in the image area
+   5: Set confidence threshold for including detected text in the image area
+   6: Set confidence threshold for detecting text in low-quality areas
+   7: Set characters to be excluded from recognition to the final value
+   8: Select the type of final processed value (string, integer, decimal)
+   10: Copy properties from another area
+   9: Run a test of the current configuration
+   ➔ Menu Areas
+   ⏎ Return to the Main Menu
+</code></pre>
+<p>Depending on the image quality and resolution, you may need to adjust the parameters in Menus 5 and 6. When configuring the data type for the final value, selecting 'Integer' or 'Decimal' will result in the exclusion of any recognized characters that do not conform to these types. The chosen data types will determine the field type in the database upon export.</p>
+<pre><code>Menu No. 1: Allows you to define the name of the area, which will later be used as a column name when exporting data to a database.
+Menu No. 2: Enables you to assign the area to a specific group or create a new group. When exporting to a SQLite database, the group name becomes the table name, and duplicate names are not permitted within the same group. If no group is defined, the area will be included as a column in all tables. If no areas have assigned groups, all areas will be exported as columns in a single table.
+</code></pre>
+<p>A particularly useful feature is Menu No. 10, which allows you to 'Copy properties from another area.' If you have previously configured another area, you can copy its settings to save time and minimize errors. In the area configuration titles, the character '∈' indicates that an area belongs to a group, while '⋓' denotes a group. Menu No. 10 presents a list of groups and areas not assigned to any group. Groups are displayed as dropdown menus; selecting a group will list all associated areas. You can then choose the area whose settings you wish to copy.</p>
+<p>Since each group name must be unique, the newly configured area's name will mirror the original area’s name with consecutive numbering. If the original area’s name includes a number, it will be incremented by +1 for the new area, regardless of its position in the name.</p>
+<pre><code> ❯ 10: Copy properties from another area
+   9: Run a test of the current configuration
+   ➔ Menu Areas
+   ⏎ Return to the Main Menu
+
+[?] Select the area from which to copy the configurations: 
+ ❯ ⋓ TOTAL
+   ⋓ APUESTAS
+   AVION_CUOTA
+   ➔ Menu Areas
+
+</code></pre>
+<p><strong>Option Number 9</strong>:<br />
+This option allows us to run a test of the current configuration. To do this, you must:</p>
+<pre><code> ❯ 9: Run a test of the current configuration
+   ➔ Menu Areas
+   ⏎ Return to the Main Menu
+
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ To run a configuration area test, you need to COPY some images from the capture folder Open Folder 📁  to the test folder  │
+│ ➔ Open Folder 📁 .                                                                                                         │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+[?] To continue select an option.: 
+ ❯ ➔ Continue
+   ⏎ Return
+
+</code></pre>
+<p>Copy some images from the captures generated by the 'collector' module into the folder indicated by the program. The goal is to review the captures and select the most representative and varied ones to obtain a test that more accurately reflects the final result.
+<img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/test_example.png" /></p>
+<p>In this example, we used 6 images from area '0', corresponding to 'N_JUGADORES' in the group 'TOTAL'. As you can see in the grid, we can open the links to the cropped areas of the original image. You will also notice that the icon that was originally present has been removed by the software, due to the previous configuration to exclude certain sub-images.</p>
+<p>You can view all areas in the 'Areas Menu.' In this example, all listed areas are configured.
+<img alt="" src="https://github.com/FoxySoftware/FoxySoftware.github.io/blob/main/resource/processor/areas_ocr_menu.png?raw=true" />
+Once all areas are configured, option 7 will be activated.</p>
+<p><strong>7: INITIATE OCR PROCESS 🔍</strong></p>
+<p>If we have a graphics accelerator compatible with CUDA, we can enable GPU usage to speed up the OCR process.</p>
+<p><strong>6: ACTIVE GPU OCR ⚙️  ✔️</strong></p>
+<pre><code> ❯ 6: ACTIVE GPU OCR ⚙️  ✔️
+   7: INITIATE OCR PROCESS 🔍
+   8: EXPORT DATA MENU 💾
+
+[?] This is optional and only valid for graphics cards with CUDA support. If enabled, the character recognition process w...: 
+ ❯ Enable GPU for the OCR processor
+   Disable GPU for the OCR processor
+   ⏎ Return
+</code></pre>
+<p>Let's start the OCR process.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/init_ocr_process.png" /></p>
+<p>When processing the first screenshot, you can preview the result and see it removed from the processing queue.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/first_process_ocr.png" /></p>
+<p><strong>Ocr area Setting &amp; Project Session State Panel</strong>:<br />
+In this example, we can see that there are no 'screenshots' pending for processing, we have processed a total of 111 images, and this number matches the total captures. If, for some reason, some of these images are deleted to prevent their processing, the system will only notify the deletion, but the process will continue without issues.
+Additionally, you can access the 'screenshots' folder and the folder where the data exported to the database is stored.</p>
+<pre><code>╭─────────────────── OCR AREA SETTINGS 🛠️  ───────────────────╮╭───────────────── PROJECT SESSION STATE 🚦  ─────────────────╮
+│                                                             ││                                                             │
+│   Required                False                             ││   Session             0_ghz_14-09-2024_crash_game_web       │
+│   File name               setting_areas.ini                 ││   Queue to process    0                                     │
+│   Completed               True                              ││   Queue processed     111                                   │
+│   Total areas detected    76                                ││   Total screenshot    111                                   │
+│   Total areas configured  76                                ││   Error message                                             │
+│   Error message                                             ││   Warning message                                           │
+│   Warning message                                           ││   Folder captures     Screenshots 🗂️                        │
+│                                                             ││   Folder db sqlite    SqLite DB 🗂️                          │
+│                                                             ││                                                             │
+╰─────────────────────────────────────────────────────────────╯╰─────────────────────────────────────────────────────────────╯
+</code></pre>
+<p><strong>Exporting the Data</strong><br />
+The options for exporting to SQLite or a spreadsheet are similar, so we will describe the database export options. First, we enter a name for the SQLite database file. There’s no need to specify the file extension, as it will be added automatically.</p>
+<pre><code> ❯ 8: EXPORT DATA MENU 💾
+
+[?] : 
+ ❯ Create and Export to a SQLite Database
+   Export to an Existing SQLite Database
+   Export to a Spreadsheet
+   Clear Processed Queue
+   ⏎ Return
+
+[?] Enter a name for the database, or type 'cancel' to abort.: my db file name
+
+</code></pre>
+<p>Next, we have the option to include some data obtained from the 'Collector' module as additional columns in our project tables.  </p>
+<pre><code>_________________________________________________________________________________
+
+[?] Use keys: ←  → | ↲ Next |  ↓ ↑ . Select the columns to be inserted into all groups of the Areas.: 
+   ◉ ➤ Default
+   ◯ Unique identifier for the session.
+   ◉ Indicates if the screenshot was taken at the start of the session.
+   ◯ Indicates if the screenshot was taken at the end of the session.
+ ❯ ◉ Indicates if the screenshot was triggered by a change detected in the frame.
+   ◯ The number assigned to the capture within the session.
+   ◯ Full date in YYYY-MM-DD format.
+
+</code></pre>
+<p>We can also include other columns that may be of interest depending on the goal of our project.</p>
+<pre><code>_________________________________________________________________________________
+
+[?] Use keys: ←  → | ↲ Next |  ↓ ↑ . Columns to include for each defined area.: 
+   ◉ ➤ Default
+   ◯ Identifier for the specific area listed in the image.
+   ◯ Raw OCR (Optical Character Recognition) value detected from the image.
+ ❯ ◉ Link to the cropped image of the specific area.
+
+</code></pre>
+<p>In this example, our database looks like this:
+<img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/db_sqlite.png" /></p>
+<p>"When exporting to a spreadsheet and selecting the 'Link to the Cropped Image...' option, we can easily open the cropped images and verify that the interpretations are correct."</p>
+<p><img alt="" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/processor/spreadsheet.png" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

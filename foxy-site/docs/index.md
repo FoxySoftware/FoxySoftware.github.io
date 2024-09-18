@@ -1,0 +1,1 @@
+![](https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/FOXY.webp)

@@ -1,0 +1,11 @@
+site_name: Foxy
+theme:
+  name: "mkdocs"  # Si instalaste el tema Material
+
+nav:
+  - Home: index.md
+  - Overview: overview.md
+  - Installation: install.md
+  - Collector Module: collector_module.md
+  - Processor Module: processor_module.md
+  
