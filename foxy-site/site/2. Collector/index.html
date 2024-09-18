@@ -1,0 +1,887 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../1.%20Installation/">
+      
+      
+        <link rel="next" href="../3.%20Processor/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.35">
+    
+    
+      
+        <title>Collector - Foxy</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.35f28582.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-collector-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Foxy" class="md-header__button md-logo" aria-label="Foxy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Foxy
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Collector
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Foxy" class="md-nav__button md-logo" aria-label="Foxy" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Foxy
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.%20Installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Collector
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Collector
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Objective:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Menu:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-video-file-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web &amp; Video File Mode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web & Video File Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Mode:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-file-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video File Mode:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#screen-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Screen Session:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Screen Session:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-screen-session-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Screen Session Menu:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture Session:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview-panel-ift4-starship-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project OverView Panel: IFT4 STARSHIP EXAMPLE:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-menu-for-collector-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Menu for "Collector" Module:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.%20Processor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Processor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.%20Starship%20Project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Starship Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.%20Xbet%20Crash%20Project/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Xbet Crash Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.%20License/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Objective:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Menu:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-video-file-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web &amp; Video File Mode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web & Video File Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Mode:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-file-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video File Mode:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#screen-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Screen Session:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Screen Session:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#new-screen-session-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Screen Session Menu:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capture Session:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview-panel-ift4-starship-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project OverView Panel: IFT4 STARSHIP EXAMPLE:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-menu-for-collector-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Menu for "Collector" Module:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<pre><code>                             .      
+                           .~5B.     
+                         ~P#@@@?     
+                        !@@@@@@@J.   
+  ^~~^:.                P@@@@@@&amp;&amp;BY. 
+  ^5@@&amp;#G?:            !&amp;@@@@@&amp;!.:.  
+    ?@@@@@&amp;!       .^!5@@@@@@@@G     
+     B@@@@@&amp;:   ^JG&amp;@@@@@@@@@@@?       '########::'#######::'##::::'##:'##:::'##:
+    .#@@@@@@~ ^P@@@@@@@@@@@@@&amp;7         ##.....::'##.... ##:. ##::'##::. ##:'##::
+    ?@@@@@@&amp;.^&amp;@@@@@@@@@@@@@@7          ##::::::: ##:::: ##::. ##'##::::. ####:::
+    5@@@@@@G G@@@@@@@@@@@@@@@!          ######::: ##:::: ##:::. ###::::::. ##::::
+    J@@@@@@#:#@@@@@@@@@@@G?@@G.         ##...:::: ##:::: ##::: ## ##:::::: ##::::
+    .P@@@@@@P#@@@@@@@@&amp;BY. ~B@G^        ##::::::: ##:::: ##:: ##:. ##::::: ##::::
+      ~YB#&amp;@@@@@@@@@@#P7    .J&amp;&amp;P5!     ##:::::::. #######:: ##:::. ##:::: ##::::
+         .::^^^^^^^^^^^:      .^^^:    ..:::::::::.......:::..:::::..:::::..:::::   
+._..  ..__..__ .___     __ .__..   .   .___ __.___..__..__     .  ..__..__ .  ..   .___
+ | |\/|[__][ __[__     /  `|  ||   |   [__ /  ` |  |  |[__)    |\/||  ||  \|  ||   [__ 
+_|_|  ||  |[_./[___    \__.|__||___|___[___\__. |  |__||  \    |  ||__||__/|__||___[___
+_______________________________________________________________________________________
+
+
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/FoxySoftware/Foxy/master/foxy-system/icons/foxy_icon_collector.png" width="5%" /> </p>
+<h1 id="module-collector-documentation">Module "Collector" Documentation</h1>
+<h3 id="main-objective">Main Objective:</h3>
+<p>The primary purpose of the <strong>Collector Module</strong> is to obtain screenshots.</p>
+<p>The software provides an interface that guides us through the process and allows us to monitor the variables or properties of the project. You can obtain screenshots from websites and video files.</p>
+<hr />
+<pre><code>The primary purpose of the &quot;Collector Module&quot; is to obtain screenshots.
+
+The software offers an interface that guides us through the process and allows us
+to monitor the variables or properties of the project.
+
+We can obtain screenshots from websites and video files.
+</code></pre>
+<hr />
+<h3 id="start-menu">Start Menu:</h3>
+<pre><code>[?] Start 🏁: 
+ ❯ Change Language.
+   New Project.
+   Continue with an Existing Project.
+</code></pre>
+<hr />
+<h3 id="web-video-file-mode">Web &amp; Video File Mode</h3>
+<pre><code>[?] Type a name for the project: CRASH GAME
+[?] Select a source: 
+   Use a video file to extract images
+ ❯ Use a web page to extract images
+</code></pre>
+<h4 id="web-mode"><strong>Web Mode:</strong></h4>
+<p>You can use any website that does not require authentication. If the website is YouTube, the software maximizes the screen and plays the video.</p>
+<p>It's possible to select a maximum resolution of 5K (5120 pixels wide by 2880 pixels tall). This allows more content to be loaded from a website or text to be rendered with a higher pixel count, improving the OCR process results.</p>
+<p>Once the project name, website, and resolution are entered, the program asks how long you want the video to last to take screenshots for configuration purposes.</p>
+<hr />
+<ol>
+<li>
+<p><strong>Selection of Virtual Screen Resolution</strong>:<br />
+   A lower resolution increases FPS in all image detection and capture processes but reduces the accuracy of optical character recognition. A 4K resolution (3840x2160) is recommended for most requirements.</p>
+</li>
+<li>
+<p><strong>Preparing the Screen Recording</strong>:<br />
+   We will record the screen of the selected website. Adjust the recording duration as needed to capture the initial images of interest on the website. Ensure the recording time is sufficient to capture all relevant information.</p>
+</li>
+</ol>
+<pre><code>[?] Select the virtual screen resolution to be used throughout the project.: 
+ ❯ FOUR K: 3840 x 2160
+   FULL HD: 1920 x 1080
+   TWO K: 2560 x 1440
+   FIVE K: 5120 x 2880
+   ⏎ Return to the Main Menu
+   Welcome menu.
+   ⊠ Close.
+</code></pre>
+<hr />
+<h3 id="video-file-mode"><strong>Video File Mode</strong>:</h3>
+<pre><code>╭─ 1: Video Source ──────────────────────────────────────────────────────────────────────────╮
+│ You must save the video at: Open Folder 📁  so that the program can detect and take        │
+│ snapshots                                                                                  │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+
+[?] To continue select an option.: 
+ ❯ ➔ Continue
+   ⏎ Return
+   ⊠ Cancel
+</code></pre>
+<p>In this case, the resolution is determined by the resolution of the video file. There is no need to generate a new video to get the images required for configuration, as snapshots of the same video can be used.</p>
+<hr />
+<h3 id="screen-session"><strong>Screen Session:</strong></h3>
+<p>A screen session is a set of capture sessions. It helps separate different sets of captures, which is useful if you want to take screenshots at different times or test different capture configurations.</p>
+<h4 id="new-screen-session-menu"><strong>New Screen Session Menu:</strong></h4>
+<p><strong>11: NEW SCREEN SESSION 🗂️  ✔️</strong></p>
+<hr />
+<h3 id="capture-session"><strong>Capture Session:</strong></h3>
+<p>The start and end of a capture session are determined by detecting a previously configured image in the program for this purpose. Depending on the project, a screen session can contain an unlimited number of capture sessions.</p>
+<p>The process of capturing a website can operate in a continuous loop or for a pre-established duration. This process monitors a defined area, looking for the image set as a trigger. Upon detecting the image, the capture begins, and a unique session ID is generated.</p>
+<p>The process can be paused using <em>Ctrl + Z</em> or completely stopped with <em>Ctrl + C</em>.</p>
+<hr />
+<h3 id="project-overview-panel-ift4-starship-example"><strong>Project OverView Panel: IFT4 STARSHIP EXAMPLE</strong>:</h3>
+<pre><code>╭──────────── PROJECT OVERVIEW 🗃️  ───────────╮╭──────── VIDEO SCREEN RECORDING 📹  ─────────╮
+│                                             ││                                             │
+│   Language           EN                     ││   Required          False                   │
+│   Name               IFT4_STARSHIP          ││   File name         0_acc_14-09-2024_ift…   │
+│   Mode               WEB                    ││   Duration seconds  46.70                   │
+│   Url                https://www.youtube…   ││   Resolution        (3840x2160)             │
+│   Screen id          0_acc_14-09-2024_if…   ││   Fps               7.43                    │
+│   Screen resolution  FOUR_K                 ││   Error message                             │
+│   Process fps        7.43                   ││   Video             Open Video 🎬           │
+│   Folder             Open Folder 📁         ││   Folder            Open Folder 📁          │
+╰─────────────────────────────────────────────╯╰─────────────────────────────────────────────╯
+</code></pre>
+<hr />
+<h3 id="main-menu-for-collector-module">Main Menu for "Collector" Module:</h3>
+<pre><code>[?] : 
+ ❯ 1:  SELECT AN AUTOMATIC OPTION 🕹️
+   2:  RELOAD SETTINGS 🔄
+   3:  START MENU 🏁
+   4:  MENU - VIDEO SCREEN RECORDING 📹  ✔️
+   5:  MENU - START IMAGE SESSION INDICATOR 🖼️  ✔️
+   6:  MENU - END IMAGE SESSION INDICATOR 🖼️  ✔️
+   7:  MENU - IMAGES OF CAPTURE INDICATORS 🖼️  ✔️
+   8:  MENU - AREA OF INDICATORS IMAGES 🔲  ✔️
+   9:  MENU - AREA OF COMPARISON 🔲   ✔️
+   10: MENU - COLOR OF AREAS 🟢  ✔️
+   11: NEW SCREEN SESSION 🗂️  ✔️
+   12: START CAPTURE PROCESS 📸
+</code></pre>
+<hr />
+<p><strong>Note</strong>: If a required configuration is not present, menus #10 and #11 will not be available.</p>
+<h1 id="start-sesssion-image">Start Sesssion Image</h1>
+<p>Using the video generated by the Foxy Collector program, we will capture a snapshot of the frame containing the image we will use as a trigger. For this task, I recommend using VLC Media Player. Open the snapshot in any image editor and crop the section you want to use. The shape of the image can be anything, but the simplest option is to crop a square or rectangle. The program will indicate where to save this image.</p>
+<p><img alt="vlc_snapshot" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/collector/vlc_snapshot.png" /></p>
+<h2 id="start-session-indicator-panel">Start Session Indicator Panel</h2>
+<p>This panel shows if the login image is present in the designated folder. If the image is missing, the system will indicate that it is required.</p>
+<p>The <strong>Threshold</strong> parameter can be adjusted in <strong>Menu No. 5</strong>. This parameter defines how similar the image must be to be considered the login image, with a default value of <strong>90%</strong>.</p>
+<h3 id="5-menu-start-image-session-indicator">5: MENU - START IMAGE SESSION INDICATOR 🖼️ ✔️</h3>
+<pre><code class="language-plaintext">╭─ 1: Start Image Session Indicator Preparation ─────────────────────────────────────────────╮
+│ We will use this video to obtain the necessary snapshots to configure the system. To       │
+│ extract these snapshots, we recommend using VLC Media Player Open Video 🎬                 │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ 2: Image Selection ───────────────────────────────────────────────────────────────────────╮
+│ Play the video in VLC Media Player and pause at the exact moment where you want to capture │
+│ the image that will mark the start of the process and session. This image is crucial as it │
+│ will trigger the beginning of the automated capture.                                       │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ 3: Image Cropping ────────────────────────────────────────────────────────────────────────╮
+│ Once you've captured the image, you may need to crop it to include only the specific       │
+│ portion that is representative and unique. On Windows, you can use Paint to perform this   │
+│ cropping. If you're on Mac OS or Linux, use any available image editor that offers similar │
+│ functions.                                                                                 │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ 4: Saving the Image ──────────────────────────────────────────────────────────────────────╮
+│ Save the cropped image in the folder designated for this purpose. The path to save the     │
+│ image is: Open Folder 📁                                                                   │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+[?] To continue select an option.: 
+ ❯ ➤ Continue
+   ⏎ Return to the Main Menu
+   Change minimum similarity threshold. The current value is 90.0 %
+   Welcome menu.
+   ⊠ Close.
+</code></pre>
+<p>Additionally, the image resolution must be equal to or lower than the project resolution.</p>
+<p><img alt="start_image_session" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/collector/start_image_session_red.png" />
+<img alt="start_image_panel" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/collector/start_image_panel_green.png" /></p>
+<p>By using Ctrl + Click on the links, you can open the image and the folder where the file should be placed.</p>
+<h2 id="end-session-image">End Session Image</h2>
+<p>The end session image is optional. It is used to indicate the closure of a capture session and to take a screenshot at the stop moment.</p>
+<h3 id="6-menu-end-image-session-indicator">6: MENU - END IMAGE SESSION INDICATOR 🖼️ ✔️</h3>
+<p>When a session is closed, the program will take a new capture only if it detects the login image again, repeating the process successively until the user decides to end it.</p>
+<h2 id="end-session-indicator-panel">End Session Indicator Panel</h2>
+<p><img alt="end_image_session" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/collector/end_image_session_green.png" /></p>
+<h2 id="capture-indicator-images">Capture Indicator Images</h2>
+<p>Both the image used to indicate the start and the end of a session serve to mark a capture. However, if we want to take additional captures between the start and end of the session, it is possible to define a set of images that will be used to indicate these captures during the session. This image could even be the same one used to start the session, depending on what you want to achieve.</p>
+<h3 id="7-menu-images-of-capture-indicators">7: MENU - IMAGES OF CAPTURE INDICATORS 🖼️ ✔️</h3>
+<p><img alt="images_capture_indicators" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/collector/images_capture_indicators_with_one.png" /></p>
+<h2 id="indicator-image-area">Indicator Image Area</h2>
+<p>Using any snapshot from the video generated by <strong>Foxy Collector</strong>, you should draw a rectangle in the area of the image where the indicator images may appear, using any image editor. This area can cover the entire screen, but to improve capture process performance, it is recommended to adjust it to a specific section.</p>
+<h3 id="8-menu-area-of-indicators-images">8: MENU - AREA OF INDICATORS IMAGES 🔲 ✔️</h3>
+<p>The default color for drawing this square/rectangle is <strong>RGB (34, 177, 76)</strong>. You can copy the color from the image located in the folder indicated by the panel.</p>
+<p><img alt="area_of_indicators_images" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/collector/area_of_indicators_images_red.png" /></p>
+<p>The minimum resolution is determined by the largest resolution of the indicator images.</p>
+<h3 id="10-menu-color-of-areas">10: MENU - COLOR OF AREAS 🟢 ✔️</h3>
+<p>If you need to change the color, simply replace the color in the image with another one. This may be useful if the website or video uses the same color in its interfaces.</p>
+<p><img alt="color_of_areas" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/collector/color_of_areas.png" /></p>
+<h2 id="comparison-area">Comparison Area</h2>
+<p>This area is not required to start the capture process but can be very useful if we want to take captures when changes are detected in a specific section or the entire screen. As with the indicator image area, draw a rectangle/square in the area where you want to monitor changes. The system will take a screenshot of the entire screen when a change is detected in that area.</p>
+<h3 id="9-menu-area-of-comparison">9: MENU - AREA OF COMPARISON 🔲 ✔️</h3>
+<p>The <strong>Threshold Difference</strong> parameter is adjustable in <strong>Menu 9</strong>. The default value is <strong>5%</strong>, indicating that a screenshot will be taken if the change detected between the current image and the previous frame is equal to or greater than 5%.</p>
+<p><img alt="comparison_area" src="https://raw.githubusercontent.com/FoxySoftware/FoxySoftware.github.io/main/resource/collector/comparison_area_emty_default_no_required.png" /></p>
+<h2 id="start-capture-process">Start Capture Process</h2>
+<p>We can define a duration in minutes and seconds, or set an indefinite duration by entering 0.</p>
+<pre><code class="language-plaintext">❯ 12: START CAPTURE PROCESS 📸
+
+Set the desired capture process duration in minutes and seconds.
+For example, 5.30 means 5 minutes and 30 seconds, or enter 0 for an indefinite 
+value.
+
+[?] Enter a value to set the duration of the capture process.: 
+</code></pre>
+<h2 id="capture-process-panel-screen-session">Capture Process Panel (SCREEN SESSION)</h2>
+<pre><code class="language-plaintext">╭────────────────────────────── SCREEN SESSION 📸  ──────────────────────────────╮
+│                                                                                │
+│   Session name              0_acc_14-09-2024_ift4_starship_web                 │
+│   Current task              Main process: processing snapshot n° ➔ 6002        │
+│   Total captures files      585                                                │
+│   Elapse process percent %                                                     │
+│   Elapse process time       00:08:47                                           │
+│   Fps process               11.38                                              │
+│   Total  sessions           1                                                  │
+│   Updated at                UTC 03:56:32                                       │
+│   Folder                    Open Folder 📁                                     │
+╰────────────────────────────────────────────────────────────────────────────────╯
+</code></pre>
+<ul>
+<li><strong>Session Name:</strong> The name of the current session.</li>
+<li><strong>Current Task:</strong> The system will display the name of the ongoing task for better clarity during the process.</li>
+<li><strong>Total Captures Files:</strong> The total number of captures obtained in real-time.</li>
+<li><strong>Elapsed Process Percent:</strong> If a process duration has been defined or a video file is being processed, this indicates the progress percentage.</li>
+<li><strong>FPS Process:</strong> Number of frames analyzed per second.</li>
+<li><strong>Updated At:</strong> The last time the screen was updated, displayed in UTC 0. You may need to adjust this time according to your timezone.</li>
+<li><strong>Folder:</strong> Folder where the captures are stored.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>

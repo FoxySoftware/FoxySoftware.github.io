@@ -1,11 +1,13 @@
 site_name: Foxy
 theme:
-  name: "mkdocs"  # Si instalaste el tema Material
+  name: material
 
 nav:
   - Home: index.md
-  - Overview: overview.md
-  - Installation: install.md
-  - Collector Module: collector_module.md
-  - Processor Module: processor_module.md
+  - Installation: 1. Installation.md
+  - Collector: 2. Collector.md
+  - Processor: 3. Processor.md
+  - Starship Project: 4. Starship Project.md
+  - Xbet Crash Project: 5. Xbet Crash Project.md
+  - License: 6. License.md
   
