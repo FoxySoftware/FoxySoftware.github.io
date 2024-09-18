@@ -1,14 +1,11 @@
-site_name: Foxy
+site_name: Foxy Software
 theme:
   name: material
-  logo: assets/logo.png
-  favicon: images/favicon.png
+  font:
+    text: Roboto
   features:
     - navigation.footer
-    
   palette:
-    - primary: green
-    - accent: green
     - media: "(prefers-color-scheme: dark)"
       toggle:
         icon: material/brightness-auto
@@ -27,6 +24,18 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  
+copyright: Copyright &copy; 2024 Denis Bueltan
+repo_url: https://github.com/FoxySoftware/Foxy
+
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/FoxySoftware/Foxy
+  generator: false
 nav:
   - Home: index.md
   - Installation: 1. Installation.md
